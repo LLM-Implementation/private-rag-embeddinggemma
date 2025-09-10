@@ -67,21 +67,15 @@ EmbeddingGemma requires Hugging Face access:
 3. Login via CLI:
 
 ```bash
-# Activate environment first
-uv shell
-
 # Login to Hugging Face
-huggingface-cli login
+uv run huggingface-cli login
 ```
 
 ### 6. Run the Demo
 
 ```bash
-# Activate the virtual environment
-uv shell
-
 # Run the RAG system
-python rag_demo.py
+uv run python rag_demo.py
 ```
 
 ## 📔 Jupyter Notebook Setup
@@ -95,41 +89,24 @@ To use this project with Jupyter notebooks in a standalone virtual environment:
 uv add jupyter notebook ipykernel
 ```
 
-### Step 2: Activate Environment
-
-```bash
-# Using uv (recommended)
-uv shell
-
-# Or traditional activation
-source .venv/bin/activate
-```
-
-### Step 3: Install/Sync All Dependencies
-
-```bash
-# Ensure everything is installed
-uv sync
-```
-
-### Step 4: Register Jupyter Kernel
+### Step 2: Register Jupyter Kernel
 
 ```bash
 # Register your virtual environment as a Jupyter kernel
-python -m ipykernel install --user --name embeddinggemma --display-name "EmbeddingGemma RAG"
+uv run python -m ipykernel install --user --name embeddinggemma --display-name "EmbeddingGemma RAG"
 ```
 
-### Step 5: Launch Jupyter
+### Step 3: Launch Jupyter
 
 ```bash
-# Start Jupyter (from within the activated environment)
-jupyter notebook
+# Start Jupyter
+uv run jupyter notebook
 
 # Or use Jupyter Lab
-jupyter lab
+uv run jupyter lab
 ```
 
-### Step 6: Use the Correct Kernel
+### Step 4: Use the Correct Kernel
 
 1. Open your notebook
 2. Go to **Kernel** → **Change kernel** → **EmbeddingGemma RAG**
@@ -163,7 +140,7 @@ DRY_RUN = False  # Set True to test without LLM
 
 ### Command Line
 ```bash
-python rag_demo.py
+uv run python rag_demo.py
 ```
 
 ### In Python/Jupyter
@@ -180,14 +157,12 @@ response = semantic_search_and_query("How do I use SQLite-vec with Python?")
 
 #### "pip not found" in Jupyter
 **Solution**: Make sure you're using the correct kernel
-1. Activate environment: `uv shell`
-2. Register kernel: `python -m ipykernel install --user --name embeddinggemma --display-name "EmbeddingGemma RAG"`
-3. Switch kernel in Jupyter to "EmbeddingGemma RAG"
+1. Register kernel: `uv run python -m ipykernel install --user --name embeddinggemma --display-name "EmbeddingGemma RAG"`
+2. Switch kernel in Jupyter to "EmbeddingGemma RAG"
 
 #### "Command not found: jupyter"
 **Solution**: Install Jupyter in your environment
 ```bash
-uv shell
 uv add jupyter notebook ipykernel
 uv sync
 ```
@@ -197,7 +172,7 @@ uv sync
 1. Visit: https://huggingface.co/google/embeddinggemma-300m
 2. Click "Request access to this repo"
 3. Wait 24 hours for approval
-4. Run `huggingface-cli login` from activated environment
+4. Run `uv run huggingface-cli login`
 
 #### Ollama Connection Error  
 **Solution**: Ensure Ollama is running
@@ -227,7 +202,7 @@ Check your setup:
 which python  # Should show .venv path
 
 # Test imports
-python -c "import sqlite_vec, ollama, sentence_transformers; print('All imports working!')"
+uv run python -c "import sqlite_vec, ollama, sentence_transformers; print('All imports working!')"
 
 # Check Ollama
 ollama list  # Should show qwen3:4b
@@ -236,13 +211,11 @@ ollama list  # Should show qwen3:4b
 jupyter kernelspec list  # Should show embeddinggemma kernel
 ```
 
-## 📊 Performance Metrics
+## 📊 System Requirements
 
-- **Database Size**: ~1.3MB for sample docs
-- **Embedding Speed**: ~10 chunks/second
-- **Search Speed**: <10ms per query
-- **Memory Usage**: ~2GB RAM total
-- **Model Sizes**:
+- **RAM**: 8GB minimum, 16GB recommended
+- **Storage**: ~3GB for models + data
+- **Models Downloaded**:
   - EmbeddingGemma-300m: ~600MB
   - Qwen3:4b: ~2.5GB
 
