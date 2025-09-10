@@ -1,0 +1,21 @@
+[project]
+name = "private-rag"
+version = "0.1.0"
+description = "A 100% private, local RAG stack using EmbeddingGemma, SQLite-vec, and Ollama"
+requires-python = ">=3.9"
+dependencies = [
+    "sentence-transformers>=2.7.0",
+    "sqlite-vec>=0.1.0",
+    "ollama>=0.2.0",
+    "huggingface-hub>=0.34.4",
+    "beautifulsoup4>=4.13.5",
+    "requests>=2.32.5",
+    "lxml>=6.0.1",
+    "psutil>=7.0.0",
+    "jupyter>=1.1.1",
+    "notebook>=7.4.5",
+    "ipykernel>=6.30.1",
+]
+
+[tool.uv]
+dev-dependencies = []
